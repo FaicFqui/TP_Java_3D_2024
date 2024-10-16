@@ -87,12 +87,12 @@ public class World {
         double norme_proximite = Math.pow(latDifference, 2) +
                 Math.pow(lonDifference * Math.cos(latAverage), 2);
 
-        // Pour obtenir la distance en km
+
         final double rayon_terre = 6371.0; // Rayon de la Terre en km
 
         // Conversion de la norme en kilomètres
         return Math.sqrt(norme_proximite) * rayon_terre;
-        //return norme_proximite;
+
     }
 
     // Recherche l'aéroport par code IATA
@@ -108,13 +108,13 @@ public class World {
     // Recherche l'aéroport le plus proche d'une position donnée
     public Aeroport findNearestAirport(double lon, double lat) {
         Aeroport nearest = null;
-        double minDistance = Double.MAX_VALUE;
+        double Distance_min = Double.MAX_VALUE;//on commene la comparaison avec le plus grand double en java
         //Aeroport reference = new Aeroport("Reference", "N/A", "N/A", latitude, longitude, "N/A"); si calcul avec aeroport.calcuDistance
         for (Aeroport aeroport : this.list) {
             //double distance = aeroport.calculDistance(reference);
             double distance = distance(lat, lon, aeroport.getLatitude(), aeroport.getLongitude());
-            if (distance < minDistance) {
-                minDistance = distance;
+            if (distance < Distance_min) {
+                Distance_min = distance;
                 nearest = aeroport;
             }
         }

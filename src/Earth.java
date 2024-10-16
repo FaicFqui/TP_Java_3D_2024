@@ -15,7 +15,7 @@ public class Earth {
 
     public Earth(){
         this.sphere = new Sphere(300);
-        //this.sphere = creatSphere(300);
+
 
         this.sphere.setTranslateX(0);
         this.sphere.setTranslateY(0);
@@ -25,7 +25,7 @@ public class Earth {
         try {
 
             Image earthImage = new Image(Objects.requireNonNull(getClass().getResource("terre_nasa.png")).toExternalForm(), true);
-            //Image earthImage = new Image("/data/terre_nasa.png");
+
             earthMaterial.setDiffuseMap(earthImage);
             sphere.setMaterial(earthMaterial);
 
@@ -33,6 +33,10 @@ public class Earth {
         } catch (NullPointerException e) {
             System.out.println("L'image n'a pas pu être chargée. Chemin incorrect ou image manquante.");
         }
+
+        Rotate rotateX = new Rotate(25, Rotate.X_AXIS); // Pour centrer la France
+        sphere.getTransforms().addAll(rotateX);
+
 
     }
 
